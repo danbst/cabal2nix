@@ -50,6 +50,7 @@ postProcess deriv@(MkDerivation {..})
   | pname == "svgcairo"         = deriv { extraLibs = "libc":extraLibs }
   | pname == "terminfo"         = deriv { extraLibs = "ncurses":extraLibs }
   | pname == "threadscope"      = deriv { configureFlags = "--ghc-options=-rtsopts":configureFlags }
+  | pname == "Unixutils"        = deriv { extraLibs = delete "crypt" extraLibs }
   | pname == "vacuum"           = deriv { extraLibs = "ghcPaths":extraLibs }
   | pname == "wxc"              = deriv { extraLibs = "wxGTK":"mesa":"libX11":extraLibs, phaseOverrides = wxcPostInstall }
   | pname == "wxcore"           = deriv { extraLibs = "wxGTK":"mesa":"libX11":extraLibs }
